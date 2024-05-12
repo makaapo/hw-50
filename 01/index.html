@@ -2,14 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Movie Cards</title>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+      .movieCard {
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          width: 200px;
+          height: 400px;
+          margin: 10px;
+          text-align: center;
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          padding: 16px;
+      }
+
+      .movieCard img {
+          width: 100%;
+          border-radius: 8px;
+      }
+
+      .movieCard h1 {
+          font-size: 18px;
+          margin-top: auto;
+      }
+
+      .movieCard p {
+          font-size: 14px;
+          color: #777;
+      }
+  </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
+  const MovieCard = (props) => {
+    return (
+      <div className="movieCard">
+        <img src={props.poster} alt={props.title}/>
+        <h1>{props.title}</h1>
+        <p>Год выпуска: {props.year}</p>
+      </div>
+    );
+  };
+
+  const App = () => {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap'
+      }}>
+        <MovieCard
+          title="Бойцовский клуб"
+          year="1999"
+          poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT187UipCynMsF9hSRPM9WTDYZgPYPsZtGXiw-gk5jDHg&s"
+        />
+        <MovieCard
+          title="Драйв"
+          year="2011"
+          poster="https://upload.wikimedia.org/wikipedia/ru/1/13/Drive2011Poster.jpg"
+        />
+        <MovieCard
+          title="Бесславные ублюдки"
+          year="2009"
+          poster="https://upload.wikimedia.org/wikipedia/ru/c/c3/Inglourious_Basterds_poster.jpg"
+        />
+      </div>
+    );
+  };
+  const rootElement = document.getElementById('root');
+  ReactDOM.createRoot(rootElement).render(<App/>);
 </script>
 </body>
 </html>
