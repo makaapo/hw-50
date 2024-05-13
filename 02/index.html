@@ -3,13 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+      body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+      }
+      .header, .footer {
+          background-color: #003366;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+      }
+      .sidebar {
+          padding: 20px;
+          width: 200px;
+          position: fixed;
+      }
+      .content {
+          margin-left: 220px;
+          padding: 20px 0 0 20px;
+      }
+       .content img {
+           display: block;
+           width: 100%;
+           height: auto;
+       }
+
+      .menu-item {
+          display: block;
+          padding: 8px;
+          margin-bottom: 5px;
+          background-color: #333;
+          text-decoration: none;
+          color: white;
+          border-radius: 5px;
+      }
+      .menu-item:hover {
+          opacity: 0.7;
+      }
+  </style>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-<div id="root"></div>
+<div id="app"></div>
 <script type="text/babel">
+  class Header extends React.Component {
+    render() {
+      return (
+        <div className="header">
+          <h1>Website</h1>
+        </div>
+      );
+    }
+  }
+
+  class Sidebar extends React.Component {
+    render() {
+      return (
+        <div className="sidebar">
+          <a href="#" className="menu-item">Home</a>
+          <a href="#" className="menu-item">News</a>
+          <a href="#" className="menu-item">Contacts</a>
+          <a href="#" className="menu-item">About Us</a>
+        </div>
+      );
+    }
+  }
+
+  class Content extends React.Component {
+    render() {
+      return (
+        <div className="content">
+          <h1>Lorem ipsum dolor sit amet.</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad at corporis eos error incidunt modi molestiae quaerat quam repellendus voluptatum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid, cumque doloremque doloribus eius et facilis fugiat in maxime, neque nihil, odit quibusdam repellendus sint sit sunt unde. Aliquam dolores excepturi explicabo maiores, praesentium suscipit tenetur? Asperiores dicta eaque explicabo inventore nam necessitatibus nostrum temporibus ullam voluptatibus. Iusto, omnis saepe.</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B5_%D0%A2%D0%BE%D0%BA%D0%BE.jpg" alt="Image" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dolorum nesciunt quas sequi! Atque esse et necessitatibus porro tempore. A dolor et vero! Ad aperiam culpa cumque doloremque fuga id minus modi odit officia velit? Aliquam amet atque blanditiis delectus dicta dolores impedit iste magni, nemo non, quod quos rem.</p>
+        </div>
+      );
+    }
+  }
+  class Footer extends React.Component {
+    render() {
+      return (
+        <div className="footer">
+          <p>Copyright © 2024</p>
+        </div>
+      );
+    }
+  }
+  class App extends React.Component {
+    render() {
+      return (
+        <div>
+          <Header />
+          <Sidebar />
+          <Content />
+          <Footer />
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.createRoot(document.getElementById('app')).render(<App />);
 </script>
 </body>
 </html>
